@@ -8,18 +8,12 @@ Config.PMColor = {
     received = 'rgb(51, 212, 49)'
 }
 --
+Config.MuteCommand = 'silenciar'
+Config.MuteMSGColor = 'rgb(252, 198, 3)'
+--
+Config.UnmuteCommand = 'desilenciar'
+--
 Config.AdminGroups = { 'god', 'admin' }
-Config.AdminAnnounces = {
-    command = 'announce',
-    title = '🦁Kings Anuncio🦁',
-    color = 'rgb(195, 139, 0)',
-    sound = true,
-    webhook = true,
-    suggestions = {
-        title = 'Anuncio servidor'
-    }
-}
-
 --
 Config.Messages = {
     {
@@ -142,7 +136,6 @@ Config.TryCommand = {
 --
 Config.StaffChat = {
     enable = true,
-    groups = { 'admin', 'mod' },
     command = 'rstaff',
     color = 'rgb(3, 252, 227)',
     suggestions = {

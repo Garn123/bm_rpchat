@@ -1,12 +1,10 @@
---lang = require('shared.lang')
-
 if Config.framework == 'esx' then
     ESX = exports['es_extended']:getSharedObject()
 elseif Config.framework == 'qb' then
     QBCore = exports['qb-core']:GetCoreObject()
 end
 --
-local mutedPlayers = {}
+mutedPlayers = {}
 --
 Notification = function(src, msg, type, time)
     TriggerClientEvent('bm_rpchat:Notification', src, msg, type, time)
@@ -15,10 +13,10 @@ end
 IsPlayerMuted = function(id)
     for _, player in pairs(mutedPlayers) do
         if player == id then
-            exports.chat:addMessage(playerId, {
+            exports.chat:addMessage(id, {
                 template =
                 '<div class="mensajes"><span class="mensajes-titulo" style="color: {0};">{1}:</span><span class="mensajes-texto">{2}</span></div>',
-                args = { Config.MuteMSGColor, lang.muteMsg, lang.mutedText }
+                args = { Config.MuteMSGColor, Lang.muteMsg, Lang.mutedText }
             })
             return true
         end
@@ -114,7 +112,7 @@ PayFee = function(id, price)
         local money = xPlayer.getAccount('bank')
         if money >= price then
             xPlayer.removeAccountMoney('bank', price)
-            Notification(id, lang.paid, 'success', 3000)
+            Notification(id, Lang.paid .. '$' .. price, 'success', 3000)
             return true
         end
     elseif Config.framework == 'qb' then
@@ -122,11 +120,24 @@ PayFee = function(id, price)
         local money = Player.PlayerData.money.bank
         if money >= price then
             Player.Functions.RemoveMoney('bank', price)
-            Notification(id, lang.paid, 'success', 3000)
+            Notification(id, Lang.paid .. '$' .. price, 'success', 3000)
             return true
         end
     end
     --
-    Notification(id, lang.noMoney, 'error', 3000)
+    Notification(id, Lang.noMoney, 'error', 3000)
     return false
 end
+
+SetCooldown = function(time, id)
+    TriggerClientEvent('bm_rpchat:MessageCooldown', id, time)
+end
+
+IsCooldownActive = function(id)
+    return Player(id).state.bm_rpchat_cooldown
+end
+
+--
+AddEventHandler('playerDropped', function(reason)
+    mutedPlayers[source] = nil
+end)

@@ -1,12 +1,10 @@
---lang = require('shared.lang')
-
 if Config.framework == 'esx' then
     ESX = exports['es_extended']:getSharedObject()
 elseif Config.framework == 'qb' then
     QBCore = exports['qb-core']:GetCoreObject()
 end
 
---[[ CreateThread(function()
+CreateThread(function()
     --
     for _, msg in pairs(Config.Messages) do
         local helpTexts = {}
@@ -18,11 +16,11 @@ end
         TriggerEvent('chat:addSuggestion', '/' .. msg.command, msg.suggestions.title, helpTexts)
     end
     --
-    TriggerEvent('chat:addSuggestion', '/' .. Config.MuteCommand, lang.muteHelpTitle,
-        { { name = lang.muteHelpName, help = lang.muteHelpText } })
+    TriggerEvent('chat:addSuggestion', '/' .. Config.MuteCommand, Lang.muteHelpTitle,
+        { { name = Lang.muteHelpName, help = Lang.muteHelpText } })
     --
-    TriggerEvent('chat:addSuggestion', '/' .. Config.UnmuteCommand, lang.unmuteHelpTitle,
-        { { name = lang.unmuteHelpName, help = lang.unmuteHelpText } })
+    TriggerEvent('chat:addSuggestion', '/' .. Config.UnmuteCommand, Lang.unmuteHelpTitle,
+        { { name = Lang.unmuteHelpName, help = Lang.unmuteHelpText } })
     --
     TriggerEvent('chat:addSuggestion', '/' .. Config.StaffChat.command, Config.StaffChat.suggestions.title,
         Config.StaffChat.suggestions.helpTexts)
@@ -31,7 +29,7 @@ end
     --
     TriggerEvent('chat:addSuggestion', '/' .. Config.DiceCommand.command, Config.DiceCommand.suggestions.title,
         Config.DiceCommand.suggestions.helpTexts)
-end) ]]
+end)
 
 PlayClientSound = function()
     PlaySoundFrontend(1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', 1)
@@ -42,15 +40,16 @@ Notification = function(msg, type, time)
     --ESX.ShowNotification(msg, type, time)
 end
 
+LocalPlayer.state:set('bm_rpchat_cooldown', false, true)
 MessageCooldown = function(time)
+    LocalPlayer.state:set('bm_rpchat_cooldown', true, true)
     CreateThread(function()
         local waitTime = time * 1000
-        cooldown = true
         while waitTime > 0 do
             waitTime = waitTime - 50
             Wait(50)
         end
-        cooldown = false
+        LocalPlayer.state:set('bm_rpchat_cooldown', false, true)
     end)
 end
 

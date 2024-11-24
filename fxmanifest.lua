@@ -19,6 +19,10 @@ shared_scripts {
     'shared/*.lua'
 }
 
+files {
+    'nui/style.css',
+}
+
 chat_theme 'gtao' {
     styleSheet = 'nui/style.css',
     msgTemplates = {
