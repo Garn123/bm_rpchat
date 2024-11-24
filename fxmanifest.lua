@@ -5,26 +5,23 @@ lua54 'yes'
 
 author '_garny'
 
-description 'BiggaMods Script Base'
-
-files {
-    'nui/**',
-    'nui/assets/**'
-    'locales/*.json'
-}
-
-ui_page 'nui/ui.html'
+description 'BiggaMods RP Chat'
 
 client_scripts {
     'client/*.lua'
 }
 
 server_scripts {
-    '@oxmysql/lib/MySQL.lua',
     'server/*.lua',
 }
 
 shared_scripts {
-    '@ox_lib/init.lua',
     'shared/*.lua'
+}
+
+chat_theme 'gtao' {
+    styleSheet = 'nui/style.css',
+    msgTemplates = {
+        default = '<b>{0}</b><span>: {1}</span>'
+    }
 }
