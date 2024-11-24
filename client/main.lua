@@ -29,6 +29,10 @@ CreateThread(function()
     --
     TriggerEvent('chat:addSuggestion', '/' .. Config.DiceCommand.command, Config.DiceCommand.suggestions.title,
         Config.DiceCommand.suggestions.helpTexts)
+    --
+    TriggerEvent('chat:addSuggestion', '/' .. Config.ClearCommand.clearChat, Lang.clearChat, {})
+    --
+    TriggerEvent('chat:addSuggestion', '/' .. Config.ClearCommand.clearChatAll, Lang.clearChatAll, {})
 end)
 
 PlayClientSound = function()

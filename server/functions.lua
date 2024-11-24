@@ -137,6 +137,13 @@ IsCooldownActive = function(id)
     return Player(id).state.bm_rpchat_cooldown
 end
 
+exports.chat:registerMessageHook(function(source, outMessage, hookRef)
+    local msg = outMessage.args[2]
+    if string.sub(msg, 1, 1) ~= "/" then
+        hookRef.cancel()
+    end
+end)
+
 --
 AddEventHandler('playerDropped', function(reason)
     mutedPlayers[source] = nil

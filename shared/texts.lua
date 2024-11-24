@@ -27,5 +27,8 @@ Lang = {
     tryCommand = '[Suerte]',
     trySuccess = '¡Has tenido suerte!',
     tryFailure = 'Vaya... no ha podido ser',
-    paid = 'Mensaje cobrado correctamente: '
+    paid = 'Mensaje cobrado correctamente: ',
+    clearChat = 'Borra el chat completamente',
+    clearChatAll = 'Borra el chat de todos los usuarios (Admin)',
+    allChatCleared = 'El chat ha sido borrado por un administrador'
 }

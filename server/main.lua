@@ -88,7 +88,6 @@ RegisterCommand(Config.MuteCommand, function(source, args, rawCommand)
     Notification(target, Lang.muted, 'info', 6000)
 end, false)
 
-
 RegisterCommand(Config.UnmuteCommand, function(source, args, rawCommand)
     if not IsAdmin(source) then return end
     local target = tonumber(args[1])
@@ -140,7 +139,6 @@ RegisterCommand(Config.PMCommand, function(source, args, rawCommand)
     })
 end, false)
 
-
 if Config.DiceCommand.enable then
     RegisterCommand(Config.DiceCommand.command, function(source, args)
         local amount = tonumber(args[1]) or 1
@@ -178,7 +176,6 @@ if Config.DiceCommand.enable then
     end, false)
 end
 
-
 if Config.StaffChat.enable then
     RegisterCommand(Config.StaffChat.command, function(source, args, rawCommand)
         local message = rawCommand:sub(string.len(Config.StaffChat.command) + 1)
@@ -198,7 +195,6 @@ if Config.StaffChat.enable then
     end)
 end
 
-
 if Config.TryCommand.enable then
     RegisterCommand(Config.TryCommand.command, function(source)
         local options = {
@@ -217,4 +213,23 @@ if Config.TryCommand.enable then
             })
         end
     end, false)
+end
+
+if Config.ClearCommand.enable then
+    RegisterCommand(Config.ClearCommand.clearChat, function(source)
+        TriggerClientEvent('chat:clear', source)
+    end)
+
+    RegisterCommand(Config.ClearCommand.clearChatAll, function(source)
+        if not IsAdmin(source) then return end
+        local players = GetPlayers()
+        for _, id in pairs(players) do
+            TriggerClientEvent('chat:clear', id)
+            exports.chat:addMessage(id, {
+                template =
+                '<div class="mensajes"><span class="mensajes-titulo"></span><span class="mensajes-texto">{0}</span></div>',
+                args = { Lang.allChatCleared }
+            })
+        end
+    end)
 end

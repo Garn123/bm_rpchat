@@ -8,6 +8,9 @@ Config.PMColor = {
     received = 'rgb(51, 212, 49)'
 }
 --
+Config.ClearChat = 'clear'
+Config.ClearChatAll = 'clearall'
+--
 Config.MuteCommand = 'silenciar'
 Config.MuteMSGColor = 'rgb(252, 198, 3)'
 --
@@ -147,4 +150,11 @@ Config.StaffChat = {
             }
         }
     }
+}
+
+--
+Config.ClearCommand = {
+    enable = true,
+    clearChat = 'clear',
+    clearChatAll = 'clearall'
 }
