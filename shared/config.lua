@@ -11,31 +11,31 @@ Config.PMColor = {
 Config.ClearChat = 'clear'
 Config.ClearChatAll = 'clearall'
 --
-Config.MuteCommand = 'silenciar'
+Config.MuteCommand = 'mute'
 Config.MuteMSGColor = 'rgb(252, 198, 3)'
 --
-Config.UnmuteCommand = 'desilenciar'
+Config.UnmuteCommand = 'unmute'
 --
 Config.AdminGroups = { 'god', 'admin' }
 --
 Config.Messages = {
     {
-        command = 'me',                                    --comando del chat
-        admin = false,                                     -- Si es un comando de administrador
-        jobs = nil,                                        --Que trabajos pueden usar el comando. se usa con los siguientes formatos:un solo trabajo -> 'police' | multiples trabajos -> {'police', 'ambulance'}
-        cooldown = nil,                                    --Tiempo de enfriamento para volver a usar el mensaje en segundos. nil para inhabilitar
-        distance = 10,                                     --Distancia a la que se lee el mensaje
-        title = 'Me',                                      --Titulo que sale al principio del mensaje
-        price = nil,                                       --Precio para usar mensaje. nil para inhabilitar
-        sound = false,                                     --Habilitar sonido del mensaje
-        color = 'rgb(247, 42, 27)',                        --Color del titulo. Acepta cualquier formato de CSS. hex, rgb, keyword
-        webhook = true,                                    -- Falta por hacer
+        command = 'me',                                    -- Chat command
+        admin = false,                                     -- Whether it's an admin command
+        jobs = nil,                                        -- Which jobs can use the command. Use the following formats: a single job -> 'police' | multiple jobs -> {'police', 'ambulance'}
+        cooldown = nil,                                    -- Cooldown time to reuse the command in seconds. Set to nil to disable
+        distance = 10,                                     -- Distance at which the message can be read
+        title = 'Me',                                      -- Title displayed at the beginning of the message
+        price = nil,                                       -- Price to use the command. Set to nil to disable
+        sound = false,                                     -- Enable sound for the message
+        color = 'rgb(247, 42, 27)',                        -- Title color. Accepts any CSS format: hex, rgb, keyword
+        webhook = true,                                    -- To be implemented
         suggestions = {
-            title = 'ME - mensaje para expresar acciones', --Descripcion del comando al escribirlo
+            title = 'ME - message to express actions',     -- Command description when typing
             helpTexts = {
                 {
-                    name = 'mensaje',          --titulo del primer argumento
-                    help = 'Texto del mensaje' --explicacion del primer argumento
+                    name = 'message',                      -- Title of the first argument
+                    help = 'Message text'                 -- Explanation of the first argument
                 }
             }
         }
@@ -48,11 +48,11 @@ Config.Messages = {
         sound = false,
         color = 'rgb(51, 87, 232)',
         suggestions = {
-            title = 'DO - mensaje para describir entorno',
+            title = 'DO - message to describe surroundings',
             helpTexts = {
                 {
-                    name = 'mensaje',
-                    help = 'Texto del mensaje'
+                    name = 'message',
+                    help = 'Message text'
                 }
             }
         }
@@ -60,15 +60,15 @@ Config.Messages = {
     {
         command = 'id',
         admin = false,
-        title = 'Pedir ID',
+        title = 'Request ID',
         sound = false,
         color = '#8B93FF',
         suggestions = {
-            title = 'ID - canal para pedir la id de alguien',
+            title = 'ID - channel to request someone\'s ID',
             helpTexts = {
                 {
-                    name = 'mensaje',
-                    help = 'Texto del mensaje'
+                    name = 'message',
+                    help = 'Message text'
                 }
             }
         }
@@ -81,29 +81,30 @@ Config.Messages = {
         sound = false,
         color = 'rgb(145, 145, 145)',
         suggestions = {
-            title = 'OCC - canal para hablar fuera de rol',
+            title = 'OOC - channel for out-of-character chat',
             helpTexts = {
                 {
-                    name = 'mensaje',
-                    help = 'Texto del mensaje'
+                    name = 'message',
+                    help = 'Message text'
                 }
             }
         }
     },
 }
 
+
 --
 Config.AutoAnnounces = {
-    enable = true,
-    intervals = 30,
-    color = 'rgb(195, 139, 0)',
-    title = '🦁Kings🦁',
+    enable = true, // Enables automatic announcements
+    intervals = 30, // Interval between announcements in minutes
+    color = 'rgb(195, 139, 0)', // Color of the announcements
+    title = 'Kings', // Title of the announcements
     texts = {
-        "Para cualquier duda, bug o reporte usar /report",
-        "Si no encuentras algo mira bien con el ojito (Alt)",
-        'No conocer las normas no te libra de las consecuencias',
-        'Usa el chat adecuadamente',
-        'Revisa el canal de comandos-ic para facilitarte el juego'
+        "For any doubt, bug or report use /report",
+        "If you can't find something, look carefully with your eye (Alt)",
+        'Not knowing the rules does not exempt you from the consequences',
+        'Use the chat properly',
+        'Check the commands-ic channel to make the game easier for you'
     }
 }
 
@@ -111,15 +112,15 @@ Config.AutoAnnounces = {
 Config.DiceCommand = {
     enable = true,
     maxDices = 5,
-    command = 'dados',
+    command = 'dice',
     distance = 10,
     color = 'rgb(195, 139, 0)',
     suggestions = {
-        title = 'Dados - Lanza de 1 a 5 dados',
+        title = 'Dice - Roll between 1 to 5 dice',
         helpTexts = {
             {
-                name = 'dados',
-                help = 'Número de dados'
+                name = 'dice',
+                help = 'Number of dice'
             }
         }
     }
@@ -128,11 +129,11 @@ Config.DiceCommand = {
 --
 Config.TryCommand = {
     enable = true,
-    command = 'suerte',
+    command = 'try',
     distance = 10,
     color = 'rgb(252, 3, 123)',
     suggestions = {
-        title = 'Suerte - Tienta tu suerte a 50% de posibilidad de acierto'
+        title = 'Try - Test your luck with a 50% chance of success'
     }
 }
 
@@ -142,11 +143,11 @@ Config.StaffChat = {
     command = 'rstaff',
     color = 'rgb(3, 252, 227)',
     suggestions = {
-        title = 'Staff - Canal privado solo para staff del servidor.',
+        title = 'Staff - Private channel only for server staff.',
         helpTexts = {
             {
-                name = 'mensaje',
-                help = 'Texto del mensaje'
+                name = 'message',
+                help = 'Message text'
             }
         }
     }
