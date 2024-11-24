@@ -20,22 +20,22 @@ Config.AdminGroups = { 'god', 'admin' }
 --
 Config.Messages = {
     {
-        command = 'me',                                    -- Chat command
-        admin = false,                                     -- Whether it's an admin command
-        jobs = nil,                                        -- Which jobs can use the command. Use the following formats: a single job -> 'police' | multiple jobs -> {'police', 'ambulance'}
-        cooldown = nil,                                    -- Cooldown time to reuse the command in seconds. Set to nil to disable
-        distance = 10,                                     -- Distance at which the message can be read
-        title = 'Me',                                      -- Title displayed at the beginning of the message
-        price = nil,                                       -- Price to use the command. Set to nil to disable
-        sound = false,                                     -- Enable sound for the message
-        color = 'rgb(247, 42, 27)',                        -- Title color. Accepts any CSS format: hex, rgb, keyword
-        webhook = true,                                    -- To be implemented
+        command = 'me',                                -- Chat command
+        admin = false,                                 -- Whether it's an admin command
+        jobs = nil,                                    -- Which jobs can use the command. Use the following formats: a single job -> 'police' | multiple jobs -> {'police', 'ambulance'}
+        cooldown = nil,                                -- Cooldown time to reuse the command in seconds. Set to nil to disable
+        distance = 10,                                 -- Distance at which the message can be read
+        title = 'Me',                                  -- Title displayed at the beginning of the message
+        price = nil,                                   -- Price to use the command. Set to nil to disable
+        sound = false,                                 -- Enable sound for the message
+        color = 'rgb(247, 42, 27)',                    -- Title color. Accepts any CSS format: hex, rgb, keyword
+        webhook = true,                                -- To be implemented
         suggestions = {
-            title = 'ME - message to express actions',     -- Command description when typing
+            title = 'ME - message to express actions', -- Command description when typing
             helpTexts = {
                 {
-                    name = 'message',                      -- Title of the first argument
-                    help = 'Message text'                 -- Explanation of the first argument
+                    name = 'message',     -- Title of the first argument
+                    help = 'Message text' -- Explanation of the first argument
                 }
             }
         }
@@ -95,10 +95,10 @@ Config.Messages = {
 
 --
 Config.AutoAnnounces = {
-    enable = true, // Enables automatic announcements
-    intervals = 30, // Interval between announcements in minutes
-    color = 'rgb(195, 139, 0)', // Color of the announcements
-    title = 'Kings', // Title of the announcements
+    enable = true,              -- Enables automatic announcements
+    intervals = 30,             -- Interval between announcements in minutes
+    color = 'rgb(195, 139, 0)', -- Color of the announcements
+    title = 'Kings',            -- Title of the announcements
     texts = {
         "For any doubt, bug or report use /report",
         "If you can't find something, look carefully with your eye (Alt)",
